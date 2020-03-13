@@ -46,7 +46,8 @@ Actions.put("/:id", verifyID, (req, res)=>
     let ClassNames = Object.keys(req.body);
     for (let i = 0; i < ClassNames.length; i++)
         if (req.actionData[ClassNames[i]] === undefined ||
-            typeof(req.actionData[ClassNames[i]]) !== typeof(req.body[ClassNames[i]]))
+            (typeof(req.actionData[ClassNames[i]]) !== typeof(req.body[ClassNames[i]]) &&
+             (ClassNames[i] !== "completed" && ClassNames[i] !== "project_id")))
             {
                 res.status(300).send("Invalid body detected");
                 return;
