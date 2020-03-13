@@ -3,8 +3,8 @@ const server = express();
 
 server.use(express.json());
 
-const ProjectRoute = require("./routes/projects");
-server.use("/projects", ProjectRoute);
+server.use("/projects", require("./routes/projects"));
+server.use("/actions", require("./routes/actions"));
 
 server.get("/", (req, res)=>
 {
